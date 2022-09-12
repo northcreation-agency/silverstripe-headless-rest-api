@@ -115,6 +115,7 @@ class HeadlessRestController extends Controller {
                 $fields = [];
 
                 $pages = SiteTree::get();
+                $this->extend('updateSiteTreePages', $pages);
                 $fields['siteTree'] = $this->getSiteTreeFields($pages, $siteTreeFields);
 
                 if($useSitetreeCache && $cacheKey) $cache->set($cacheKey, $fields);
