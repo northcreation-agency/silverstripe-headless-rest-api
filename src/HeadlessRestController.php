@@ -123,8 +123,9 @@ class HeadlessRestController extends Controller {
                 break;
             
             default:
-                // TODO: add support for extending with custom actions
-                return $this->notFound();
+                $result = $this->notFound();
+                $this->extend('addCustomActions', $request, $action, $result);
+                return $result;
                 break;
         }
     }
